@@ -14,8 +14,9 @@ Given(/^I have deposited (#{CAPTURE_CASH_AMOUNT}) in my super account$/) do |amo
 	my_account.balance.should eq(amount) , "Expected the balance to be #{amount} but it was #{my_account.balance}"
 end
 
-When(/^I request \$(\d+)$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+When(/^I withdraw (#{CAPTURE_CASH_AMOUNT})$/) do |amount|
+  teller = Teller.new
+  teller.withdraw_from(my_account,amount)
 end
 
 Then(/^\$(\d+) should be dispensed$/) do |arg1|
